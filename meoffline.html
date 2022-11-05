@@ -83,14 +83,17 @@
   </div>
   </div> 
   <script>
-    checknet();
+    
+    var setinter = setInterval(checknet,1000);
     function checknet(){
        var netstat = document.getElementById("netstat");
         var isonline = navigator.onLine;
         if(isonline==true){
-           
+           setinter.clear();
            netstat.innerHTML="Online";
            netstat.style.color="Orange";
+           location.reload();
+       
         }
         else{
             netstat.innerHTML="Offline";
@@ -98,7 +101,11 @@
             
             
         }
+     
+
     }  
+    
+
   </script>
 </body>
 </html>
