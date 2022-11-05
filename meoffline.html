@@ -89,11 +89,11 @@
        var netstat = document.getElementById("netstat");
         var isonline = navigator.onLine;
         if(isonline==true){
-           setinter.clear();
+           
            netstat.innerHTML="Online";
            netstat.style.color="Orange";
            location.reload();
-       
+           setinter.clear();
         }
         else{
             netstat.innerHTML="Offline";
