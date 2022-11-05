@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    	    <meta name="theme-color" content="#A37161" />
+    <title>offline</title>
+    <style>
+      body{
+          
+          padding:0;
+          margin:0;
+      }  
+      
+      *{
+         
+        box-sizing:border-box; 
+          
+      }
+      
+     .offcard{
+     
+         height:100vh;
+         width:100vw;
+         display:flex;
+         flex-direction:column;
+         justify-content: center;
+         align-items:center;
+         background:#A37161;
+         overflow:auto;  
+         
+     }  
+     
+     .offcard div{
+         position:relative;
+         width:300px;
+         display:flex;
+         flex-direction:column;
+         justify-content:center;
+         align-items:center;
+         padding:30px 12px 20px 12px;
+         background:white; 
+         margin:8px;
+         border-radius:50px;
+         animation:zag 3s ease infinite alternate;
+     }
+     
+    .offcard div:hover{
+    
+         background:#EFDCC5;
+    }
+     
+     @keyframes zag{
+       0%{
+          
+          transform:rotate(10deg) translate(10px);
+       }
+       100%{
+          
+          transform:rotate(-5deg) translate(-10px) ; 
+       } 
+     }
+    </style>
+</head>
+<body>
+  
+ <div>  
+  <div class="offcard">   
+   
+     <div>
+       <h2>SparkerBM</h2>  
+      </div>
+     <div>        
+   <h3>You are <span id="netstat"></span></h3>   
+   </div> 
+   <div onclick="checknet()">
+  <p>click here to Refresh the page<p>
+  <p>You are offline!</p>
+  <p>check your network connection</p> 
+  </div>
+ 
+  </div>
+  </div> 
+  <script>
+    checknet();
+    function checknet(){
+       var netstat = document.getElementById("netstat");
+        var isonline = navigator.onLine;
+        if(isonline==true){
+           
+           netstat.innerHTML="Online";
+           netstat.style.color="Orange";
+        }
+        else{
+            netstat.innerHTML="Offline";
+            netstat.style.color="Red";
+            
+            
+        }
+    }  
+  </script>
+</body>
+</html>

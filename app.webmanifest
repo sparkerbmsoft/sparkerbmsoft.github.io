@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "name": "SparkerBM",
+      "short_name": "SparkerBM",
+        "start_url": "/",
+          "display": "standalone",
+            "theme_color": "#A37161",
+              "background_color": "#000",
+                "description": "A Receipt Generator app for businesses",
+                  "icons": [{
+                      "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyBJXhXPjPCWmLVQGgao_wUpCBz2Oht5CiXomZMG8Wdb6eDvkuuww-nYFh8qG39mIyXPkxNWXs3JAiVgQTEKfV839urg340wEKlYC-lRB4IAYtwL_Li6I6QKUH1y7e-D0U9RDoFyH2ZgZxFo5QqSOylXGXSSOxQLTPj_C10CqXXSMoqjcVVWTXwDOf/s1600/project_20221026_2047103-01.png",
+                         "sizes": "192x192",
+                             "type": "image/png"
+                               }]
+                               }

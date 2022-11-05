@@ -1,0 +1,2470 @@
+
+<!-- sparkerbm software made by Balaji Murumbe from scratch for helping small, medium, enterprise businesses. It was taken 2 months to develope. It is a receipt Generator software. copyright@2022,First Release Date:4 November 2022. Balaji Murumbe reserves all rights for this code. Dont try to copy this code and avoide doing misleading activities. We take strict action if we found such bad activities.Give us feedbacks and help to improve this software. contact: sparkerbm@gmail.com -->
+
+    	<!DOCTYPE html>
+    	<html lang="en">
+    	<head>
+    	    <meta charset="UTF-8">
+    	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    	    <meta name="theme-color" content="#A37161" />
+    	    <link rel="manifest" href="app.webmanifest">
+    	    
+    	    
+    	    <title>sparkerbm software</title>
+    	  
+<style>
+    
+    body{
+        
+        padding:0;
+        margin:0;
+        background:#4C3A51;
+    }
+    
+    *{
+        box-sizing:border-box;
+        font-family: Arial;
+    }
+   
+   
+   #downloadbar{
+        z-index:180;
+        display: none;
+   }
+   
+   @media (display-mode: browser) {
+   
+      #downloadbar{
+           display: block
+              }
+         }
+              
+   #downloadbar div{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;  
+    color:white;   
+    background:#A37161;
+   }
+  
+   #insbutton{
+       
+       height:40px;
+       width:100px;
+       background:orange;
+       color:white;
+       border:none;
+       font-size:16px;
+       font-weight:bold;
+       border-radius:8px;
+       
+   }
+   
+   .pagesect{
+       
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items:center;
+   }
+   
+   #pag1,#pag2,#pag3{
+      
+       display:none;
+       margin-top:0px;
+       height:100vh;
+       width:100%;
+       background:#4C3A51;
+       padding:10px 8px 10px 8px;
+       overflow:scroll;
+       color:pink;
+       margin-bottom:3em;
+      
+   } 
+   
+   #navcard{
+   
+      position:fixed;
+      bottom:0;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-around;
+      align-items: center;
+      z-index:20;
+      background:#774360; 
+      box-shadow:0px 4px 4px rgba(0,0,0,0.4);
+      will-change:scroll-position;
+      
+      
+   }
+   
+   #headernav{
+       
+       width:100%;
+       display:flex;
+       justify-content:space-around;
+       align-items: center;
+       background:none;
+      
+   }
+   
+  #headernav button{
+     width:80px; 
+     height:45px;
+     background:none;
+     border:none;
+     font-size:16px;
+     font-weight:bold;
+     color:pink;
+     border-bottom:solid 4px #774360;
+     transition:0.2s ease;
+   }
+   
+  
+  
+   #headertitle{
+   
+       position:sticky;
+       top:0;
+       z-index:50;
+       width:100%;
+       padding:8px;
+       font-size:21px;
+       font-weight:bold;
+       color:pink;
+       background:#774360; 
+       
+   } 
+   
+   .headercalci{
+       height:30px;
+       width:100%;
+       display:flex;
+       justify-content:space-around;
+       align-items:center;
+       font-size:14px;
+       font-weight:bold;
+       color:pink;
+       border-radius:4px;
+       background:#A37161;
+      
+   }
+   
+   .appcardbox{
+ 
+      display:flex;
+      justify-content:center; 
+      align-items:center;
+      background:none;
+      border-radius:8px;
+      margin:8px 0px 8px 0px;
+      padding:0;
+      color:silver;
+      outline:solid 1.5px #B25068;
+   }
+   
+   .btnbox{
+       height:185px;
+       width:60px;
+       display:flex;
+       justify-content: center;
+       align-items: center;
+       background:none;
+       border-top-right-radius:8px;
+       border-bottom-right-radius:8px;
+       padding:4px;
+       border-left:solid 1.5px #B25068;
+       
+   }
+   #adbtn{
+     
+       height:100%;
+       width:50px;
+       background:#A37161;
+       border-radius:5px;
+       border:none;
+       font-size:18px;
+       font-weight:bold;
+       color:#A37161;
+       
+        
+   }
+   
+   .appcard{
+       height:100%;
+       width:100%;
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items:center;
+       margin:0;
+       background:none;
+       
+       
+       
+   }
+   
+   .appcard input{
+       
+       height:45px;
+       width:100%;
+       border:none;
+       outline:none;
+       padding:0px 8px 0px 8px;
+       background:none;
+       font-size:16px;
+       color:#FFC0CB;
+       
+       
+   }
+
+   
+  
+  #adbtn:active{
+      
+      transform:scale(0.8);
+      transition:0.2s ease;
+      
+  }
+   
+   
+   #inpricelab{
+       
+       border-bottom:none;
+   }
+   
+   #units{
+       
+       border:none;
+     
+   }
+   
+   
+   
+   
+   #parentview{
+   
+       width:100%;
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items:center;
+       background:none;
+       
+       
+   }
+   .parentviewbox{
+       
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items:center;
+       padding:4px;
+       flex:1;
+       background:none;
+       margin:20px 0px 20px 0px;
+       color:#FFC0CB;
+       overflow:auto;
+       
+   }
+  
+   .newrowbox{
+       height:100%;
+       width:300px;
+       display:flex;
+       justify-content:space-around;
+       align-items:center;
+       outline:solid 1.5px #B25068;
+       border-radius:8px;
+       font-size:14px;
+       margin-top:30px;
+       will-change:transform,opacity;
+   }
+   .newrows{
+        
+       height:100%;
+       width:100%;
+       display:flex;
+       flex-direction:column;
+       justify-content: center;
+       align-items:center;
+       border-right:solid 1.5px #B25068;
+       background:none;
+       overflow:auto;
+       padding:0;
+       
+   }
+   
+   .newrowlab{
+        
+       height:100%;
+       width:80px;
+       display:flex;
+       flex-direction:column;
+       justify-content: center;
+       align-items: center;
+       font-size:11px;
+       
+       background:none;
+       overflow:auto;
+       padding:0;
+     
+       
+   }
+  
+  .checkboxlable{
+      
+      height:110px;
+      width:100%;
+      background:#A37161;
+      color:white;
+      border-radius:8px;
+  }
+  .newrowrem{
+    
+    height:100%;
+    width:80px;  
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    padding:4px;
+ 
+      
+  }
+
+.newrowrem label{
+    
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    font-weight:bold;
+    
+}
+
+.newrowrem label:active{
+   
+   transform:scale(0.9); 
+}
+
+.newrowrem input{
+    
+   display:none;
+    
+}
+
+   .newrowlab p,.newrows p{
+       
+       height:30px;
+       width:100%;
+       border-bottom:solid 1.5px #B25068;
+       padding:8px;
+       margin:0;
+       text-align:left;
+   }
+   
+ #newamtid,#newamtlab{
+       
+       border-bottom:none;
+       
+   }
+   
+   .pag1card,.pag2card,.pag3card{
+       
+       
+       width:100%;
+       display:flex;
+       flex-wrap:wrap;
+       justify-content:space-around;
+       align-items: start;
+       padding:8px;
+    
+       
+   }
+   
+   .addstatcard{
+       position:fixed;
+       visibility:hidden;
+       width:100%;
+       top:0;
+       z-index:150;
+       background:none;
+        
+       
+   }
+   .addstatbox{
+    
+      
+      position:relative;
+      opacity:0;
+      width:100%;
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      font-size:12px;
+      font-weight:bold;
+      color:white;
+      background:none;
+     
+   }
+   
+   
+   #addstat{
+      
+      display:flex:
+      justify-content:center;
+      align-items:center;
+      padding:12px;
+      border-radius:4px;
+      text-align:center;
+      background:black;
+      
+   }
+   
+   
+   .canvawrap{
+   
+       width:100%;
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items:center;
+       margin-top:6px;
+      
+   }
+   
+   #canvacont{
+   
+       display:flex;
+       flex-direction:column;
+       justify-content:center;
+       align-items: center;
+       transform:scale(0.8);
+       background:white;
+   }
+   
+   #storedt{
+       
+       display:flex;
+       flex-direction:column;
+       justify-content: center;
+       align-items: center;
+       border-radius:8px;
+       outline:solid 1.5px #B25068;
+       padding:8px 0px 8px 0px;
+       background:none;
+       margin-bottom:20px;
+   }
+    
+   #storedt input{
+       height:40px;
+       width:300px;
+       border:none;
+       border-bottom:solid 1px #B25068;
+       outline:none;
+       padding:0px 8px 0px 8px;
+       background:none;
+       text-align:center;
+      
+       
+   }
+  
+    #storedt #storedc{
+      
+      border-bottom:none;
+       
+   }
+   
+   .upbillcard{
+       height:40px;
+       width:300px;
+       margin-top:10px;
+       display:flex;
+       flex-direction:row;
+       justify-content:space-around;
+       align-items:center;
+       font-weight:bold;
+       border-bottom:solid 2px #A37161;
+   }
+.crcard,.gstcard,.discountcard,#sendwpcard, #customercard, .paystatcard, .themecard,#dwbtncard{
+       
+       display:flex;
+       flex-direction:column;
+       justify-content: center;
+       align-items: center;
+       border-radius:8px;
+       outline:solid 1.5px #B25068;
+       background:none;  
+       margin-bottom:20px;
+       
+      
+   }
+   
+#crchoice, #gst,#discount,#customermb, #customernm,#selpaystat,#seltheme,#tagline{
+       
+       height:55px;
+       width:300px;
+       border:none;
+       padding:0px 8px 0px 8px;
+       background:none;
+       text-align: center;
+       outline:none;
+       font-size:16px;
+   }
+   
+   
+   
+#prpaidentry{
+       display:flex;
+       justify-content:center;
+       align-items:center;
+       height:55px;
+       width:300px;
+       border:none;
+       border-top:solid 1px #B25068;
+       outline:none;
+       padding:0px 8px 0px 8px;
+       background:none;
+       text-align:center;
+     
+   }
+ 
+ #textsendbut{
+     
+       display:flex;
+       justify-content:center;
+       align-items:center;
+       height:55px;
+       width:100%;
+       color:white;
+       text-decoration:none;
+       background:#A37161;
+       border-radius:4px;
+       font-weight:bold;
+       font-size:20px;
+       
+ }
+ 
+ .paycard{
+     
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
+     align-items:center;
+     padding:8px;
+     
+ }
+ .price{
+     
+     font-size:32px;
+     font-weight:bold;
+     color:orange;
+ }
+ #dwbtn{
+     
+     height:55px;
+     width:300px;
+     border:none;
+     background:#A37161;
+     color:white;
+     font-weight:bold;
+     font-size:20px;
+     border-radius:4px;
+ }
+ 
+@keyframes pageslide{
+    
+    0%{
+     
+     transform:translateY(-5%);   
+    }
+    
+    100%{
+      
+     transform:translateY(0%);      
+    }
+} 
+
+@keyframes zimag{
+    
+    
+    0%{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    100%{
+       opacity:1; 
+       transform:translateY(0px); 
+    }
+}
+
+@keyframes rowenters{
+    
+    0%{
+     
+     transform:translateX(5%) scale(0.8);   
+    }
+    
+    100%{
+     
+     transform:translateX(0%) scale(1);      
+    }
+} 
+ 
+.inpcards{
+
+    height:60px;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    border-bottom:solid 1px #B25068;
+}
+
+.inpcards:nth-child(3){
+    
+    border-bottom:none;
+    
+}
+
+.inpbtnsbox{
+  height:40px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  background:#A37161;
+  border-radius:8px; 
+  margin-right:4px;
+}
+
+.inpbtns{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:40px;
+    width:40px;
+    background:none;
+    color:#EFDCC5;
+    border-radius:50%; 
+    font-weight:bold;
+    font-size:18px;
+    
+    
+}
+
+#newrepobtn{
+
+    height:45px;
+    width:150px;
+    margin-top:8px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    background:none;
+    border-radius:8px;
+    color:#A37161;
+    
+}
+
+.helpbox{
+    
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   padding:8px; 
+   border-radius:8px;
+}
+
+.helpbox div{
+
+   padding:8px;
+   outline:solid 1px #B25068;
+   border-radius:8px;
+   
+}
+
+.alinks{
+    
+    text-decoration:none;
+    border-bottom:solid 1px #A37161;
+    color:#A37161;
+}
+
+.notebox{
+    
+    display:block;
+    position:fixed;
+    background:#A37161;
+    z-index:100;
+    transition:0.5s ease;
+    
+}
+.note{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    padding:8px;
+    color:#fff;
+}
+
+.note div{
+    
+    width:300px;
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    background:none;
+    border-radius:8px;
+    margin:8px 0px 8px 0px;
+    font-size:14px;
+    
+}
+
+#intitle{
+    
+    font-size:42px;
+    font-weight:bold;
+    color:#fff;
+    animation:zimag 0.5s ease;
+}
+
+#cgreeting{
+    
+    font-size:24px;
+    font-weight:bolder;
+    color:#fff;
+}
+
+#indec{
+    
+    font-size:20px;
+    text-align:center;
+    animation:zimag 1s ease;
+}
+
+#newuserload{
+    
+    position:fixed;
+    z-index:90;
+    
+}
+
+#newuserload div{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    background:#fff;
+    overflow:auto;
+    padding:8px;
+}
+.newusercard{
+   
+    width:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:8px;
+    background:green;
+    text-align:center;
+    margin:0px 8px 50px 8px;
+}
+.lcardbox input,.newusercard input{
+    
+    height:60px;
+    width:250px;
+    border:none;
+    outline:solid 1.5px #A37161;
+    border-radius:50px;
+    font-size:16px;
+    padding:8px;
+    text-align:center;
+}
+.lcardbox input:focus{
+    
+    background:#EFDCC5;
+}
+
+#newuserload button{
+
+   height:60px;
+   width:250px;
+   border-radius:50px;
+   border:none;
+   background:#A37161;
+   color:#fff;
+   font-size:20px;
+   font-weight:bold;
+   
+}
+
+#licardpg{
+    display:none;
+    position:fixed;
+    z-index:80;
+    height:100vh;
+    width:100vw;
+    overflow:auto;
+    background:#A37161;
+    
+}
+.lcardbox{
+
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    overflow:scroll;
+    padding:50px 8px 200px 8px; 
+   
+}
+.lcardbox div{
+   
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:center;
+   width:300px;
+   background:#fff;
+   border-radius:8px;
+   padding:30px 8px 30px 8px;
+   text-align:center; 
+   margin:8px;
+   
+}
+.lcardbox div:hover{
+    
+    background:#EFDCC5;
+    
+}
+.lbtn,.lcardbox a,.lcardbox button{
+   
+   
+   width:250px;
+   padding:20px 8px 20px 8px;
+   border-radius:50px;
+   border:none;
+   background:#A37161;
+   color:#fff;
+   font-size:20px;
+   font-weight:bold; 
+   text-align:center;
+   text-decoration:none;
+   margin:8px;
+}
+.lbtn{
+    
+    background:white;
+    color:black;
+}
+
+.lbtn:active{
+
+transform:scale(0.9);
+
+}
+</style>
+
+    	</head>
+    	
+    	<body onload="themechange()">
+    	   <div id="licardpg">
+    	         <div class="lcardbox">
+    	            <div>
+    	            <p>Welcome!</p>   
+    	            <p id="lcardbname"></p>
+    	            </div>
+    	             <div>
+    	           
+    	     <h2>Sparkerbm Software</h2>
+    	    
+    	    <p>Enter Client Id to continue</p>
+    	                 <input type="text" id="passkey" placeholder="Enter Client ID." onchange="appclids()">
+    	                 <button onclick="appclids()">Sign in</button>
+    	                                
+ </div>   	                 
+    	            
+    	             <div>
+    	                  <p><b>If you are new users, Buy monthly subscription plan, to get your client ID</b></p>   
+    	          <p id="subfees">You will receive client ID after successfully purchasing subscription plan</p>
+    	               <a href="https://bit.ly/sparkerplan" id="Reqid">Buy subscription</a>
+    	                 </div>
+    	             </div>
+    	         </div>  
+    	   </div>
+    	    <div id="newuserload">
+    	        <div>
+    	            <div class="newusercard">
+    	               <h2>Before we move forward tell us...</h2>
+    	              
+    	                <p><b>What's your business name?</b></p>
+    	                <p><input type="text" id="newstorename" placeholder="Enter Your business Name"></p>
+    	      
+    	      <p><b>Business Address</b></p>
+    	               <p> <input type="text" id="newstoreaddr" placeholder="Enter Your business Address"></p>
+    	                       
+       <p><button onclick="launchstore()">Whats Next ?</button></p>
+      
+    	                </div>
+    	            </div>
+    	        </div>
+    	    </div>
+    	    <div class="notebox">
+          <div class="note">
+          
+              <div>
+              <p id="intitle">SparkerBM</p>   
+              <p id="cgreeting"></p>    
+              <p id="indec">Build Trust By Sharing Receipts.</p>
+            
+              </div>
+              
+              <div>
+               <button onclick="lnotify()" class="lbtn">Create Receipt</button>  
+             </div>
+             
+              <div>
+              
+              <p>Made by Balaji Murumbe.</p>   
+              </div>
+          
+            
+          </div>
+      </div>  
+      
+    	 <div id="downloadbar">
+    	     <div>
+    	       <p><b>Install App</b></p> 
+    	       <p><button id="insbutton">Install</button></p> 
+    	     </div>
+    	 </div> 
+    	   
+   <div id="headertitle">
+  <div>            
+  <p><span id="storetitle">Your Store</span> Receipt</p>
+  </div>
+  <div class="headercalci">
+    <p><span>SubTotal: </span><span id="htotal">0</span></p>
+    <p><span>NetTotal: </span><span id="hnetamt">0</span></p>  
+  </div>
+  
+  </div> 
+  
+ <div id="navcard">  
+
+  <div id="headernav">
+            <button class="pageheadlab" onclick="showaddbox()">Receipt</button>
+            <button class="pageheadlab" onclick="showtornbox()">Share</button>
+              <button class="pageheadlab" onclick="showstore()">Settings</button>
+        </div> 
+   </div> 
+   
+     <div class="addstatcard">  
+     <div class="addstatbox">
+           <p id="addstat">Item added ✅</p>
+       </div> 
+       </div> 
+     
+      
+      <div id="pag1" class="apppg">
+          
+       <div class="pag1card"> 
+        
+        
+      <div class="pagesect">
+       <div><button onclick="addnewrepo()" id="newrepobtn">New Receipt +</button></div>
+      <div class="appcardbox">
+          
+          
+        <div class="appcard">
+            <div class="inpcards">
+                
+              <input type="text" list="ilist" id="itemname" placeholder="Item" autocomplete="off"> 
+          
+<datalist id="ilist">
+ <option id="randdata">
+              </datalist>
+</div>
+
+<div class="inpcards">
+   
+           <input type="number" id="itemqn" list="qnlist"  placeholder="Quantity" autocomplete="off" onchange="inputvalqn()"> 
+ <div class="inpbtnsbox">        
+ <p class="inpbtns" onclick="addqn()">+</p>          
+ <p class="inpbtns" onclick="subqn()">-</p>          
+ </div>
+ </div>
+ 
+ <div class="inpcards"> 
+        
+<input type="number" list="ulist" id="units" placeholder="price" autocomplete="off" onchange="inputvalpr()">
+<div class="inpbtnsbox">
+<p class="inpbtns" onclick="addpr()">+</p>  
+<p class="inpbtns" onclick="subpr()">-</p>             
+</div>
+ </div> 
+    
+      </div>  
+           
+          <div class="btnbox">
+              
+          <button onclick="additems()" id="adbtn" onclick="additems()">Add+</button>
+     </div> 
+     
+       
+        
+      </div>
+      </div>
+      
+      <div class="pagesect">
+       <div class="parentviewbox">
+     
+        
+          <div class="upbillcard">
+            <p>Added: <span id="totitem">0</span></p>
+           
+            
+        </div>   
+       
+       <div id="parentview" onscroll="parallax()">
+           
+       </div>
+       <div>
+          <p id="itstat"></p> 
+       </div>   
+         </div>
+         </div>
+     </div>
+     
+  </div>  
+  
+
+  
+  <div id="pag2" class="apppg">
+        <div class="pag2card">
+            <div class="pagesect">
+             <p><b>Choose Payment Status </b><small>(optional)</small></p>
+          <div class="paystatcard">
+                <select id="selpaystat" onchange="paystatfun()">
+        <option value="No Status">Select</option>
+       <option value="paid" Selected>Paid</option>
+       <option value="unpaid">Unpaid</option>
+       <option value="prpaid" >Somewhat paid</option>
+       <option value="preq">
+                      Payment Request 
+                  </option>
+              </select> 
+              <input type="number" id="prpaidentry" value="0" placeholder="Enter partially paid amount" onchange="paystatfun()" disabled> 
+          </div>
+          
+<p><b>Enter Customer Name </b><small>(optional)</small></p> 
+  
+ <div id="customercard">
+   <div>
+    <input type="text" id="customernm" placeholder="Enter Customer name" onchange="customerfun()">         
+          </div>
+        </div>
+     </div> 
+     
+     <div class="pagesect">
+     <p><b>Share Text Receipt</b></p>
+     
+  <div id="sendwpcard">    
+   <div>
+        <input type="number" id="customermb" placeholder="Enter WhatsApp number" onchange="sendwpfun()">
+        <a id="textsendbut" href="#">Send to WhatsApp</a>
+   </div>
+ </div> 
+ 
+
+ 
+  <p><b>Share Graphics Receipt</b></p>
+ <div id="dwbtncard">
+     <p>Download as Image</p>
+       <button id="dwbtn" onclick="downl()">Download Receipt</button> 
+  </div>
+  </div>
+    <div class="canvawrap">
+    <div id="canvacont">
+      
+    </div>
+    </div>
+    
+   </div>
+  </div>
+  
+ <div id="pag3" class="apppg">
+    <div class="pag3card"> 
+      <div class="pagesect">
+      <p><b>Edit Store Details</b></p> 
+  <div>   
+   <div id="storedt">
+     
+          <input type="text" id="storenm" class="hinp" placeholder="Your Store Name" onchange="storedataindb()" value="Your store name">
+        
+          <input type="text" id="storedc" class="hinp" placeholder="Address" onchange="storedataindb()">
+          </div>
+      </div> 
+        
+        <p><b>Add your own tagline</b></p> 
+         <div class="themecard">
+             <div>
+              <input id="tagline" onchange="changetagline()" placeholder="eg: Thank you for shopping">   
+             </div>
+         </div>
+         </div>
+         <div class="pagesect">
+          <p><b>Choose theme color</b></p>
+          
+         <div class="themecard">
+          <div>
+              
+              <select id="seltheme" onchange="themechange()">
+                  <option value="dark"  name="themes">Dark</option>
+               <option value="dawn" name="themes">
+                Winter Dawn      
+               </option>
+                  <option value="light" name="themes">Light</option>
+                  <option value="deepdark" name="themes">Deep dark</option>
+              </select>
+          </div>
+          </div>
+          <p><b>choose currency</b></p>
+          <div class="crcard">
+            <div>
+             <input type="text" list="clist" id="crchoice" placeholder="Enter Currency" value="INR" onchange="crchange()">
+             <datalist id="clist">
+               <option value="INR">  
+               <option value="USD">            
+             </datalist> 
+            </div>
+          </div>
+          
+          <p><b>Set GST (If Applicable)</b></p>
+          <div class="gstcard">
+              <div>
+               <input type="number" list="glist" value="0" id="gst" placeholder="eg: 18" onchange="setgst()">  
+                
+             <datalist id="glist">
+               <option value="18">
+               <option value="25">  
+               <option value="28">   
+               <option value="5"> 
+               <option value="3">                  
+             </datalist> 
+             
+              </div>
+              <div id="gstinfo">
+                  
+              </div>
+          </div>
+          
+          <p><b>Set discount Rate in percentage (if needed)</b></p>
+          
+          <div class="discountcard">
+              <div>
+               <input type="number" list="dlist" value="0" id="discount" placeholder="eg:10% off" onchange="setdiscount()">
+               <datalist id="dlist">
+               <option value="5">  
+               <option value="10">            
+             </datalist>  
+              </div>
+              <div id="discountinfo">
+                 
+              </div>
+          </div>
+          
+           <p><b>Help</b></p>
+           
+         <div class="helpbox">
+             
+              <div class="helpboxcard">
+                  <p><b>SubTotal:-</b> Total without tax amount.</p>
+                  <p><b>NetTotal:-</b> Total including tax and discount amount. Remember NetTotal is final total.</p>
+                  <p><b>GST%:-</b> Goods and Service Tax, GST by default 0% if you want to add gst you have to set it according to your business.</p>
+                  <p><b>Discount%:-</b>  Discount % applied on total amount. You have to set it in percentage.</p>
+                  <p><b>Contact: </b>Facing any issues regarding this software, have a queries please send us mail. <a class="alinks" href="mailto:sparkerbm@gmail.com">Tap here to send email</a> </p>
+              </div> 
+             
+         </div>
+         <div><p><small>@Made by Balaji Murumbe. All rights reserved.</small></p></div>
+        </div>  
+        
+    </div>     
+  </div>
+  
+  <script>
+     
+     window.addEventListener('load', () => {
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('servicework.js');
+        }
+        });
+        
+      
+      var storetitle = document.getElementById("storetitle");
+      var item = document.getElementById("itemname");
+      var quantity= document.getElementById("itemqn");
+      var unit = document.getElementById("units");
+      var storenm = document.getElementById("storenm");
+      var storedc = document.getElementById("storedc");
+      var addstat= document.getElementsByClassName("addstatbox")[0];
+      var addstatcard= document.getElementsByClassName("addstatcard")[0];
+      var addstatpara= document.getElementById("addstat");
+      
+      var headlab = document.getElementsByClassName("pageheadlab");
+      var iswprepsent=false;
+      var isdwrepsent=false;
+      
+          var inames=[];
+          var itemqn=[];
+          var qnunit=[];
+          var stnamepre="My Store";
+          var stdcpre="My Store Address";
+          var getstorednm="mystore";
+          var getstoreddc;
+          
+       
+ function storedataindb(){
+          
+          
+      var getinpdc = storedc.value;  
+      var getinpstore = storenm.value;
+if(getinpstore!=""){    
+
+localStorage.setItem("stordc",getinpdc);     localStorage.setItem("stname",getinpstore); 
+   
+}
+      getdatafromdb();
+      genranditem();
+      }
+
+function getdatafromdb(){
+
+   getstoreddc = localStorage.getItem("stordc"); 
+ getstorednm = localStorage.getItem("stname");
+ 
+          storetitle.innerHTML=getstorednm;
+          
+          storedc.value = getstoreddc;  
+   
+  storenm.value = getstorednm;
+  stnamepre = getstorednm;
+  stdcpre = getstoreddc;   
+  
+}
+ 
+getdatafromdb();
+var launchpage = getbyid("newuserload");  
+
+function launchstore(){
+    
+    var newstname = getbyid("newstorename").value;
+    var newstaddr = getbyid("newstoreaddr").value;
+    
+    if(newstname!=""){
+    storenm.value=newstname;
+    storedc.value=newstaddr;
+    storedataindb();
+    launchpage.style.display="none";
+    statusbartext("Congrats! Store Created");
+         statani();    
+    }
+    else{
+        
+        statusbartext("Enter Required Details");
+         statani();    
+        
+    }
+   
+   
+} 
+showbname();
+function showbname(){
+    
+    var lcardbname = getbyid("lcardbname");
+    lcardbname.innerHTML=storenm.value;
+    
+}
+
+function authauto(){
+ var authpg = getbyid("licardpg");
+ var clauthkey = localStorage.getItem("cids");  
+ var cltoken = authtoken();
+ 
+ if(clauthkey==cltoken){
+ 
+     authpg.style.display="none";
+     statusbartext("Auto logged in");
+         statani();
+ } 
+}
+
+function authtoken(){
+    
+    var sines ="sbm";
+    var fines="2002";
+    var starmath=(200/2)+100;
+    var softkey = sines+fines+"@"+starmath;
+    var clid = softkey+"spark";
+    
+    return clid;
+     
+}
+
+function appclids(){
+    
+    var getpasskey = getbyid("passkey");
+    var passvalue = getpasskey.value;
+    var licardpg = getbyid("licardpg");
+    var clauthid = authtoken();
+   
+    if(passvalue==clauthid){
+       
+      localStorage.setItem("cids",passvalue); licardpg.style.display="none";
+statusbartext("Login Successfull");
+         statani();      
+    }
+    
+    else{
+        
+        statusbartext("Wrong Client ID");
+         statani();    
+       getpasskey.value="";
+       
+    }
+    
+}
+
+var deferredPrompt;
+var installButton = document.getElementById("insbutton");
+var dwbar = document.getElementById("downloadbar");
+
+function opendwbar(){
+
+dwbar.style.display="none"; 
+
+}
+
+opendwbar();
+ window.addEventListener('beforeinstallprompt', (e) => {
+
+       e.preventDefault();
+        
+        deferredPrompt = e;
+                 
+                                                                                           showInAppInstallPromotion();
+                                                            dwbar.style.display="block";
+                                                                                                             });
+                                                                                                             
+installButton.addEventListener('click', async () => {
+  
+deferredPrompt.prompt();
+
+const { outcome } = await deferredPrompt.userChoice;
+                                             deferredPrompt = null;
+                                                                                             if (outcome === 'accepted') {
+                                                                                            
+                                                                                         } 
+                                                                                         else if (outcome === 'dismissed') {
+                                                                                                                                            
+                                             }
+                                                                                        });
+
+
+var launchpage = getbyid("newuserload");
+                                              
+function lnotify(){
+   
+ var getnote = document.getElementsByClassName("notebox")[0];   
+ getnote.style.transform="translateX(100%)";                                         
+ getnote.style.visibility="hidden";  
+ if(storenm.value!=""){
+  launchpage.style.display="none";   
+ }
+}                  
+  timegreet();                                                                    
+  function timegreet(){
+  
+      var currentdate = new Date();
+      var currenthour = currentdate.getHours();
+      var cgreet= document.getElementById("cgreeting");
+      
+      if( currenthour>=1 && currenthour<=11 ){
+      
+      cgreet.innerHTML="Good Morning";
+      
+      }
+      else if(currenthour>=12 && currenthour<=17){
+      
+          cgreet.innerHTML="Good Afternoon";
+          
+      }
+      else if(currenthour>=18 && currenthour<=23){
+      
+          cgreet.innerHTML="Good Evening";
+
+      }
+      else{
+          
+          cgreet.innerHTML="Hi";
+          
+      }
+  }
+  
+ 
+  
+      function clearstat(){
+      
+         addstat.style.opacity="1";
+         addstat.style.transform="translateY(-50px)";
+         addstatcard.style.visibility="hidden";
+      }
+      
+      genranditem();
+      
+      function additems(){
+          
+          upcalci();
+          genranditem();
+          makevib();
+          var inameval = item.value;
+          var itemqnval = quantity.value;
+          var unitval = unit.value;
+          
+          if(inameval!="" && itemqnval!="" && unitval!=""){
+          
+          inames.push(inameval);
+          itemqn.push(itemqnval);
+          qnunit.push(unitval);
+          
+          addnodes();
+          
+          checksadd();
+          headercal();
+          statusbartext(totallitems+" ✅ Item Added");
+          
+          }
+          else{
+              
+           statusbartext("Please Enter Item");
+          }
+          
+          statani();
+          clearinp();
+          
+      }
+
+
+function realmoney(moneynum){
+
+    var optobj={
+        
+  style: "currency",
+  currency:cr,
+       
+    }
+    
+    var tomoney= moneynum.toLocaleString("en-IN",optobj);
+     
+   return tomoney;
+}
+ 
+ var inptextqn = quantity;
+ var inptextprice = unit;
+ 
+ var sumqn=0;
+ var sumpr=0;
+ 
+ function incrqn(inputbox){
+   
+  sumqn+=1;
+  inputbox.value=sumqn;
+   
+ }   
+    
+ function decrqn(inputbox){
+     
+ 
+ if(sumqn<=0){
+ inputbox.value=0;
+ }
+ else{
+ sumqn-=1; 
+ inputbox.value=sumqn;
+ 
+ }
+ } 
+ 
+ function incrpr(inputbox){
+   
+  sumpr+=1;
+  inputbox.value=sumpr;
+   
+ }   
+    
+ function decrpr(inputbox){
+     
+ 
+ if(sumpr<=0){
+ inputbox.value=0;
+ }
+ else{
+ sumpr-=1; 
+ inputbox.value=sumpr;
+ 
+ }
+ } 
+ 
+function inputvalqn(){
+    
+    sumqn=Number(inptextqn.value);
+}
+
+function inputvalpr(){
+    
+    sumpr=Number(inptextprice.value);
+}
+
+function addqn(){
+ incrqn(inptextqn);
+   
+}
+
+function subqn(){
+ decrqn(inptextqn);
+}
+
+function addpr(){
+ 
+ incrpr(inptextprice);   
+}
+
+function subpr(){
+ decrpr(inptextprice);
+}
+ 
+
+  
+    
+    
+    
+    
+    function noelm(){
+       
+       var newelm = getbyid("itstat"); 
+      
+       if(totallitems==0){
+           
+           newelm.innerHTML="No Items in List...";
+       }
+       if(totallitems!=0){
+           newelm.innerHTML=totallitems+" "+"Items in List..";
+       }
+    }
+      
+      function statani(){
+      setTimeout(clearstat,1500);
+          addstatcard.style.visibility="visible";
+          addstat.style.opacity="1"; addstat.style.transform="translateY(10%)";
+          addstat.style.transition="0.5s ease-out";
+          
+          
+          
+      }
+      
+      function statusbartext(stext){
+          
+          addstatpara.innerHTML=stext;
+      }
+      
+   function getbyid(myelid){
+       
+       var newel = document.getElementById(myelid);
+       return newel;
+   }
+   
+   function getbyclass(myclassid,classindex){
+       var newel = document.getElementsByClassName(myclassid)[classindex];
+       return newel;
+   }
+   
+   function elbgcolor(elm,bgclr){
+     
+       elm.style.background=bgclr;
+   }
+   
+   function eltextcolor(elm,textclr){
+       
+       elm.style.color=textclr;
+   }
+   
+  function savetheme(){
+      var oplist = document.getElementsByName("themes");
+      
+var getctheme= localStorage.getItem("ctheme");  
+    
+     for(var op=0;op<oplist.length;op++){
+         
+         if(oplist[op].value==getctheme){
+             
+             oplist[op].selected=true;
+         }
+         
+     }
+  }
+   
+  savetheme();
+  
+   function themechange(){
+       var seltheme = document.getElementById("seltheme").value;
+       localStorage.setItem("ctheme",seltheme);
+       var islight = false;
+       var appbarbg = ["#774360","#774360","#122620","#A37161"];
+       var appbartext = ["#ffffff","#FFC0CB"];
+       var pagesbg =["#ffffff","#4C3A51","#291F20","#190C09","#EFDCC5"];
+       var pagestextcolr =["#000000","#FFC0CB","#EFDCC5","#8C8C7C"];
+       var cardoutlinecolor =["#FFC0CB","#B25068"];
+       var btnscolor = ["#fff","#fff"];
+      
+       var apppg1 = getbyid("pag1");
+       var apppg2 = getbyid("pag2");
+       var apppg3 = getbyid("pag3");
+       var appbar = getbyid("navcard");
+       var headertitle = getbyid("headertitle");
+       var adbtn= getbyid("adbtn");
+       var seletheme = getbyid("seltheme");
+       var selepaystat = getbyid("selpaystat");
+       var prpaidentryx = getbyid("prpaidentry");
+       var customernm = getbyid("customernm");
+        var customermb = getbyid("customermb");
+        var taglineinp = getbyid("tagline");
+        var crchoice = getbyid("crchoice");
+        var gstinp = getbyid("gst");
+        var discountinp = getbyid("discount");
+       var parentviewbox = getbyclass("parentviewbox",0);
+       
+       if(seltheme=="light"){
+        statusbartext("Light theme applied successfully"); 
+        statani();
+elbgcolor(appbar,appbarbg[0]); 
+elbgcolor(headertitle,appbarbg[0]);
+elbgcolor(apppg1,pagesbg[0]);
+elbgcolor(apppg2,pagesbg[0]);      
+elbgcolor(apppg3,pagesbg[0]); 
+
+
+eltextcolor(appbar,appbartext[0]);
+eltextcolor(headertitle,appbartext[0]);
+eltextcolor(apppg1,pagestextcolr[0]);
+eltextcolor(apppg2,pagestextcolr[0]);  
+eltextcolor(apppg3,pagestextcolr[0]);  
+eltextcolor(item,pagestextcolr[0]);            
+eltextcolor(quantity,pagestextcolr[0]); 
+eltextcolor(units,pagestextcolr[0]);
+eltextcolor(parentviewbox,pagestextcolr[0]);
+eltextcolor(storedc,pagestextcolr[0]);
+eltextcolor(storenm,pagestextcolr[0]);
+eltextcolor(seletheme,pagestextcolr[0]);
+eltextcolor(selepaystat,pagestextcolr[0]);
+eltextcolor(prpaidentryx,pagestextcolr[0]);
+eltextcolor(customernm,pagestextcolr[0]);
+eltextcolor(customermb,pagestextcolr[0]);
+eltextcolor(taglineinp,pagestextcolr[0]);
+eltextcolor(crchoice,pagestextcolr[0]);
+eltextcolor(gstinp,pagestextcolr[0]);
+eltextcolor(discountinp,pagestextcolr[0]);
+eltextcolor(adbtn,btnscolor[0]);
+          
+       }
+       
+       if(seltheme=="dark"){
+         
+        
+                
+elbgcolor(appbar,appbarbg[1]); 
+elbgcolor(headertitle,appbarbg[1]);
+elbgcolor(apppg1,pagesbg[1]);
+elbgcolor(apppg2,pagesbg[1]);      
+elbgcolor(apppg3,pagesbg[1]); 
+
+eltextcolor(appbar,appbartext[1]);
+eltextcolor(apppg1,pagestextcolr[1]);
+eltextcolor(apppg2,pagestextcolr[1]);  
+eltextcolor(apppg3,pagestextcolr[1]);   
+eltextcolor(item,pagestextcolr[1]);            
+eltextcolor(quantity,pagestextcolr[1]); 
+eltextcolor(units,pagestextcolr[1]); 
+eltextcolor(parentviewbox,pagestextcolr[1]);
+eltextcolor(storedc,pagestextcolr[1]);
+eltextcolor(storenm,pagestextcolr[1]);
+eltextcolor(seletheme,pagestextcolr[1]);
+eltextcolor(selepaystat,pagestextcolr[1]);
+eltextcolor(prpaidentryx,pagestextcolr[1]);
+eltextcolor(customernm,pagestextcolr[1]);
+eltextcolor(customermb,pagestextcolr[1]);
+eltextcolor(taglineinp,pagestextcolr[1]);
+eltextcolor(crchoice,pagestextcolr[1]);
+eltextcolor(gstinp,pagestextcolr[1]);
+eltextcolor(discountinp,pagestextcolr[1]);
+eltextcolor(adbtn,btnscolor[1]);           
+       }
+ if(seltheme=="deepdark"){
+     
+     elbgcolor(appbar,appbarbg[2]); 
+elbgcolor(headertitle,appbarbg[2]);
+elbgcolor(apppg1,pagesbg[2]);
+elbgcolor(apppg2,pagesbg[2]);      
+elbgcolor(apppg3,pagesbg[2]); 
+
+eltextcolor(appbar,appbartext[1]);
+eltextcolor(apppg1,pagestextcolr[1]);
+eltextcolor(apppg2,pagestextcolr[1]);  
+eltextcolor(apppg3,pagestextcolr[1]);   
+eltextcolor(item,pagestextcolr[1]);            
+eltextcolor(quantity,pagestextcolr[1]); 
+eltextcolor(units,pagestextcolr[1]); 
+eltextcolor(parentviewbox,pagestextcolr[1]);
+eltextcolor(storedc,pagestextcolr[1]);
+eltextcolor(storenm,pagestextcolr[1]);
+eltextcolor(seletheme,pagestextcolr[1]);
+eltextcolor(selepaystat,pagestextcolr[1]);
+eltextcolor(prpaidentryx,pagestextcolr[1]);
+eltextcolor(customernm,pagestextcolr[1]);
+eltextcolor(customermb,pagestextcolr[1]);
+eltextcolor(taglineinp,pagestextcolr[1]);
+eltextcolor(crchoice,pagestextcolr[1]);
+eltextcolor(gstinp,pagestextcolr[1]);
+eltextcolor(discountinp,pagestextcolr[1]);
+eltextcolor(adbtn,btnscolor[1]); 
+ }
+ 
+ if(seltheme=="dawn"){
+   
+elbgcolor(appbar,appbarbg[3]); 
+elbgcolor(headertitle,appbarbg[3]);
+elbgcolor(apppg1,pagesbg[4]);
+elbgcolor(apppg2,pagesbg[4]);      
+elbgcolor(apppg3,pagesbg[4]); 
+
+eltextcolor(appbar,appbartext[0]);
+eltextcolor(apppg1,pagestextcolr[0]);
+eltextcolor(apppg2,pagestextcolr[0]);  
+eltextcolor(apppg3,pagestextcolr[0]);   
+eltextcolor(item,pagestextcolr[0]);            
+eltextcolor(quantity,pagestextcolr[0]); 
+eltextcolor(units,pagestextcolr[0]); 
+eltextcolor(parentviewbox,pagestextcolr[0]);
+eltextcolor(storedc,pagestextcolr[0]);
+eltextcolor(storenm,pagestextcolr[0]);
+eltextcolor(seletheme,pagestextcolr[0]);
+eltextcolor(selepaystat,pagestextcolr[0]);
+eltextcolor(prpaidentryx,pagestextcolr[0]);
+eltextcolor(customernm,pagestextcolr[0]);
+eltextcolor(customermb,pagestextcolr[0]);
+eltextcolor(taglineinp,pagestextcolr[0]);
+eltextcolor(crchoice,pagestextcolr[0]);
+eltextcolor(gstinp,pagestextcolr[0]);
+eltextcolor(discountinp,pagestextcolr[0]);
+eltextcolor(adbtn,btnscolor[0]); 
+  
+ }     
+ 
+ 
+   }
+
+var cr="INR"; 
+var gettagline = getbyid("tagline"); 
+var hnetamt = getbyid("hnetamt");
+var htotal = getbyid("htotal");
+var getgst = document.getElementById("gst");
+var getdiscount = document.getElementById("discount"); 
+var globaltagline="";
+var netprice=total;
+var dprice =total;
+var gstamount=0;
+var discountamt=0;
+
+
+function headercal(){
+ 
+  calcost();
+  setgst();
+  setdiscount();
+  htotal.innerHTML=realmoney(total);
+  hnetamt.innerHTML=realmoney(dprice);
+  
+}
+
+function setgst(){
+ 
+gstamount = Math.round((total * getgst.value)/100);
+netprice = Math.round(total + gstamount);
+gstinfo.innerHTML=`<p>GST amt: ${gstamount} ${cr}</p> <p> Total(including GST) = ${netprice} ${cr}</p>`; 
+localStorage.setItem("gstvalue",getgst.value);
+
+setdiscount();
+
+}
+
+function setdiscount(){
+
+discountamt = Math.round((netprice * getdiscount.value)/100);
+dprice = Math.round(netprice-discountamt);
+var getdisinfo = document.getElementById("discountinfo");
+getdisinfo.innerHTML=`<p>You Saved : ${discountamt} ${cr}</p> <p>Now total : ${dprice} ${cr} </p>`;
+hnetamt.innerHTML=dprice;
+localStorage.setItem("discountvalue",getdiscount.value);
+ 
+}
+
+getrawoutdb();
+
+function crchange(){
+    
+ var getcrchoice = document.getElementById("crchoice").value;   
+  cr = getcrchoice;
+  headercal();
+}
+
+
+function getrawoutdb(){
+ 
+var dvalue = localStorage.getItem("discountvalue");
+var gvalue = localStorage.getItem("gstvalue");
+
+getdiscount.value=dvalue;     
+getgst.value=gvalue;    
+}
+
+
+function allcount(){
+
+var licardpges = getbyid("licardpg");
+if(localStorage.num){
+localStorage.num = Number(localStorage.num)+1;
+
+}
+else{
+   
+   localStorage.num=1;
+}
+var gotnum=localStorage.num;
+
+if(gotnum>=2){
+licardpges.style.display="block";
+authauto();
+}
+}
+
+allcount();
+
+function changetagline(){
+ localStorage.setItem("rptagline",gettagline.value);
+ 
+ gettaglinefromdb();
+ 
+ }
+ 
+function gettaglinefromdb(){
+ 
+globaltagline=localStorage.getItem("rptagline"); 
+if(globaltagline!=null){
+  gettagline.value=globaltagline;
+     
+  }
+  else{
+      globaltagline="Thank you";
+  }
+ }
+ 
+ gettaglinefromdb();
+ 
+     
+     var globalpaystat="";
+     var globalremamt=0;
+     
+     
+     function paystatfun(){
+        
+        var selpaystat = document.getElementById("selpaystat").value;
+        var prpaidentry = document.getElementById("prpaidentry");
+        var paidamt = prpaidentry.value;
+        globalpaystat = selpaystat; 
+        prpaidentry.setAttribute("disabled","disabled");
+        prpaidentry.style.opacity="0.4";  
+        if(selpaystat=="prpaid"){
+          
+          globalremamt=dprice-prpaidentry.value; 
+          globalpaystat=`HALF PAID:${paidamt}, REMAIN:${globalremamt}`
+           prpaidentry.removeAttribute("disabled","disabled");
+prpaidentry.style.opacity="1";    
+statusbartext("Please Enter somewhat paid amount ");  
+if(prpaidentry.value!="" && prpaidentry.value!="0"){
+   statusbartext("Payment status updated successfully");   
+}    
+        }
+        else if(selpaystat=="paid"){
+           
+           prpaidentry.value=dprice;
+           globalpaystat=`PAID:${dprice}`;
+           statusbartext("Payment status updated successfully");
+        }
+        else if(selpaystat=="unpaid"){
+           prpaidentry.value=dprice;
+           globalpaystat=`NOT PAID:${dprice}`
+           statusbartext("Payment status updated successfully");
+        }
+        else if(selpaystat=="preq"){
+            globalpaystat=`Payment Request PAY ${dprice}`;
+            prpaidentry.value=dprice;
+            statusbartext("Payment status updated successfully");
+        }
+        
+        
+        statani();
+     }
+     
+     var globalcustnm="";
+     
+     function customerfun(){
+         
+         var customername= getbyid("customernm");
+         globalcustnm ="To: "+customername.value;
+         
+         statusbartext("customer name updated successfully ");
+         statani();
+     }
+     
+  function sendwpfun(){
+       
+         var customerphone = getbyid("customermb").value;
+         
+         var textsendbutlink = getbyid("textsendbut");
+var txtmsg =`__Receipt---- *${stnamepre}*__,${stdcpre}, Date: __*${currentdate}*__, Hello! __*${globalcustnm}*__, You purchased following items:${citems}, Quantity: ${cqn} and price: ${cunit} having amounts ${amtarr}. Your bill is here: *[Total:-${dprice} ${cr},Subtotal:${total} ${cr},GST:${getgst.value}% | gstamt:-${gstamount},Disc:${getdiscount.value}% | discamt:${discountamt} . payment status:${globalpaystat}]*. __${globaltagline} @ ${stnamepre}__.`;
+
+         var newlink = "https://wa.me/"+"+91"+customerphone+
+"/?text="+txtmsg;
+     textsendbutlink.setAttribute("href", newlink);
+         
+         statusbartext("Sending message...");
+         statani();
+         iswprepsent=true; 
+         
+     }
+     
+     function genranditem(){
+         
+         var getrandopt = document.getElementById("randdata");
+         var randnm = Math.floor(Math.random() * (999 - 100) ) + 100;
+      if(storenm.value!=""){
+       var randitem = stnamepre.substr(0,3).toUpperCase()+randnm;
+         getrandopt.value=randitem;
+        }
+     }
+     
+      function clearinp(){
+    
+          item.value="";
+          quantity.value="";
+          unit.value="";
+          sumqn=0;
+          sumpr=0;
+      }
+      var cindex =0;
+      
+   function createl(elemname){
+          
+         var newele = document.createElement(elemname);
+        
+         
+         return newele; 
+      }
+      
+      function createltxt(elemtxt){
+          
+         var neweletxt = document.createTextNode(elemtxt);
+         
+         
+         return neweletxt; 
+      }
+      
+      function seteleattr(ele,attr,attrval){
+          
+          ele.setAttribute(attr,attrval);
+          
+          
+      }
+      
+      function appendel(parentel,childel){
+          
+          parentel.appendChild(childel);
+          
+      }
+      
+      function aninode(newrow){
+          
+          
+          
+      }
+      
+      function addnodes(){
+          
+          var parentview = document.getElementById("parentview");
+           
+         var newrow = createl("div");
+         var newrowlab = createl("div");
+         var newrowrem = createl("div");
+         var newrowbox = createl("div");
+         
+         
+         var newitem = createl("p");
+         var newqn = createl("p");
+         var newunit = createl("p");
+         var newamt = createl("p");
+         var newchecklable=createl("label");
+         var newchecklabletxt=
+         createltxt("Delete");         
+         
+         var newitemlab = createl("p");
+         var newqnlab = createl("p");
+         var newunitlab = createl("p");
+         var newamtlab = createl("p");
+         
+         var newcheck = createl("input");
+
+seteleattr(newrowbox,"class","newrowbox");
+seteleattr(newrow,"class","newrows");
+seteleattr(newrowrem,"class","newrowrem");
+seteleattr(newrowlab,"class","newrowlab");
+seteleattr(newitem,"class","newitem");
+seteleattr(newcheck,"type","checkbox");
+seteleattr(newcheck,"class","checks");
+seteleattr(newcheck,"name","confirm");
+seteleattr(newcheck,"checked","checked");
+seteleattr(newcheck,"value",cindex);
+seteleattr(newcheck,"onchange","checksadd()");
+seteleattr(newchecklable,"class","checkboxlable");
+seteleattr(newamt,"id","newamtid");
+seteleattr(newamtlab,"id","newamtlab");
+
+         cindex+=1;
+         
+var newamttxt = createltxt(quantity.value*unit.value); 
+var newitemtext =createltxt(item.value);
+var newqntext =createltxt(quantity.value); 
+var newunittext = createltxt(unit.value);
+
+
+var labnewitemtext =createltxt("Item");
+var labnewqntext =createltxt("Qnty"); 
+var labnewunittext = createltxt("Price");
+var labnewamttxt = createltxt("Amt"); 
+ 
+appendel(newamt,newamttxt);
+appendel(newitem,newitemtext);
+appendel(newqn,newqntext);
+appendel(newunit,newunittext);
+appendel(newchecklable,newchecklabletxt);
+
+
+appendel(newitemlab,labnewitemtext);
+appendel(newqnlab,labnewqntext);
+appendel(newunitlab,labnewunittext);
+appendel(newamtlab,labnewamttxt);
+
+
+appendel(newrowlab,newitemlab);
+appendel(newrowlab,newqnlab);
+appendel(newrowlab,newunitlab);
+appendel(newrowlab,newamtlab);
+
+          
+appendel(newrow,newitem);
+appendel(newrow,newqn);
+appendel(newrow,newunit);
+appendel(newrow,newamt);
+appendel(newchecklable,newcheck);
+appendel(newrowrem,newchecklable);
+
+
+
+
+appendel(newrowbox,newrowlab);
+appendel(newrowbox,newrow);
+appendel(newrowbox,newrowrem);
+appendel(parentview,newrowbox);
+
+
+      }
+      
+      var citems=[];
+      var cqn =[];
+      var cunit =[];
+      var getconfirms = document.getElementsByName("confirm");
+          var nitems = document.getElementsByClassName("newitem");
+          var newrows = document.getElementsByClassName("newrowbox");
+          
+      function checksadd(){
+          citems=[];
+          cqn =[];
+          cunit =[];
+          
+          for(var i=0;i<getconfirms.length;i++){
+              if(getconfirms[i].checked==true){
+            citems.push(inames[i]);
+            cqn.push(itemqn[i]);
+            cunit.push(qnunit[i]);
+            
+              }
+             
+             
+          }
+          
+         applyonstyle(); 
+         
+      }
+      
+      var totallitems=0;
+      noelm();  
+      
+      function upcalci(){
+      
+          calcost();
+          var gettotitem= document.getElementById("totitem");
+          totallitems = citems.length;
+          gettotitem.innerHTML=`${totallitems}`;
+          
+          noelm();
+          
+           
+      }
+      
+      function clearnodes(){
+      
+          let element = document.getElementById("parentview");
+while (element.firstChild) {
+  element.removeChild(element.firstChild);
+  
+}
+      }
+      
+      function addnewrepo(){
+        
+         citems.length=0;
+         cqn.length=0;
+         cunit.length=0;
+         amtarr.length=0;
+         
+         totallitems=0;
+         total=0;
+         upcalci();
+         headercal();
+         clearnodes();
+         statusbartext("New Receipt Added");
+         statani();
+     }
+      
+      function delitem(nowel){
+          
+          nowel.style.display="none";
+      }
+      
+     function applyonstyle(){
+        for(var n=0;n<getconfirms.length;n++){
+        if(getconfirms[n].checked==false){
+        
+        newrows[n].style.transition="0.5s ease";
+newrows[n].style.opacity="0";        newrows[n].style.transform="translateX(100%)";       
+
+       
+        setTimeout(delitem,500,newrows[n]);  
+        statusbartext("Item Deleted");
+         totallitems = totallitems-1;                    
+        }
+        
+        headercal();     
+        upcalci();
+        statani();
+        }  
+          
+      }
+     
+     
+     var addshowbx = document.getElementById("pag1");
+     var addtornbx = document.getElementById("pag2");
+     var addstorebx = document.getElementById("pag3");
+     var navbtnshow = document.getElementsByClassName("navbtn")[0];
+     var navbtntorn = document.getElementsByClassName("navbtn")[1];
+     showaddbox();
+     
+     function makevib(){
+         
+         navigator.vibrate(26);
+     }
+     
+     function lighthead(tcolr,bcolr,indx){
+      
+         
+     headlab[indx].style.color=tcolr;
+     headlab[indx].style.borderColor=bcolr;
+     
+  
+     }
+     
+ 
+ 
+function hidepages(pg1,pg2,pg3,st1,st2,st3){
+     
+
+     pg1.style.display=st1;
+     pg2.style.display=st2;
+     pg3.style.display=st3;
+     
+     
+     
+     }
+     
+function anipage(cpage){
+    
+cpage.style.animation="pageslide 0.3s ease-out";
+    
+}   
+     
+     function showaddbox(){
+      
+     makevib();
+     lighthead("#C3B2AC","#D4936A",0);
+     lighthead("pink","#774360",1);
+     lighthead("pink","#774360",2);
+     anipage(addshowbx);
+     setTimeout(hidepages,0,addshowbx,addtornbx,addstorebx,"block","none","none");
+   
+      headercal();
+     }
+     
+     function showtornbox(){
+     
+      makevib();
+      lighthead("pink","#774360",0);
+      lighthead("#C3B2AC","#D4936A",1);
+      lighthead("pink","#774360",2);
+      
+      anipage(addtornbx);
+      setTimeout(hidepages,200,addshowbx,addtornbx,addstorebx,"none","block","none");
+    
+      statusbartext("✅ Receipt is Ready");
+      statani();
+      calcost();  
+      paystatfun();
+cr1 = randomclr();
+cr2 = randomclr();
+cr3 = randomclr();
+cr4 = randomclr();
+cr5 = randomclr();
+cr6 = randomclr();
+cr7 = randomclr();
+cr8 = randomclr();
+cr9 = randomclr();
+     }
+
+function showstore(){
+     makevib();
+     lighthead("pink","#774360",0);
+     lighthead("pink","#774360",1);
+     lighthead("#C3B2AC","#D4936A",2);
+     anipage(addstorebx);
+     setTimeout(hidepages,200,addshowbx,addtornbx,addstorebx,"none","none","block");
+     
+     getrawoutdb();
+     
+     statusbartext("Edit Store Name");
+      statani();
+      
+} 
+
+
+    
+var cr1=randomclr();
+var cr2=randomclr();
+var cr3=randomclr();
+var cr4=randomclr();
+var cr5=randomclr();
+var cr6=randomclr();
+var cr7=randomclr();
+var cr8=randomclr();
+var cr9=randomclr();
+     function randomclr(){
+         
+         var newclr = Math.floor(Math.random()*200);
+         return newclr;
+         
+     }
+     
+     var total=0;
+     var amtarr=[];
+     
+     function calcost(){
+     
+     total=0;
+     amtarr=[];
+     for(let i=0; i<cunit.length;i++){
+       let amtvalue =Number(cunit[i])*Number(cqn[i]);
+       amtarr.push(amtvalue);
+          total+=Number(amtarr[i]);
+          
+         }
+     }
+     
+ var options = {
+ 
+  dateStyle: 'full',
+  timeStyle: 'short',
+  hourCycle:'h12'
+  
+  
+};
+
+   var date =new Date();
+   var currentdate= date.toLocaleString('en-US', options);
+   
+  
+ 
+ 
+     	function 	setup(){
+	
+			c =	createCanvas(370,520);
+			pg=createGraphics(370,520);
+			c.id("canvapg");		
+			c.parent("canvacont");
+			
+				
+				}
+			
+				function draw(){
+				
+				 drawcert(); 
+				  
+				}
+				
+				
+				 
+     function drawcert(){
+     
+				   var x;
+						 var y;
+					  var r = 4;
+					  
+
+
+var grd = pg.drawingContext.createLinearGradient(0,0,0,170)
+grd.addColorStop(0, color(cr1,cr2,cr3));
+grd.addColorStop(0.5, color(cr4,cr5,cr6));
+grd.addColorStop(1, color(cr7,cr8,cr9));
+pg.drawingContext.strokeStyle=grd;
+
+					    
+					
+							pg.fill("white");
+							pg.strokeWeight(5);
+							pg.rect(10,10, 350, 500, 0);
+				
+					  pg.noStroke()
+					  pg.fill("green");
+					  pg.textSize(8);
+							pg.textAlign(LEFT);
+							pg.text(currentdate,30,20,250,100);
+							pg.textStyle(BOLD);
+							pg.fill("grey");
+							pg.textAlign(CENTER);
+							pg.text(globalcustnm,30,20,500,100);
+			   
+			   	pg.fill(color(cr7,cr1,cr9));
+							pg.rect(30,40,310,80,8);
+			   	pg.fill("white");
+							pg.textSize(20);	
+							pg.textStyle(BOLD);
+							pg.textAlign(CENTER);
+							if(storenm.value!=""){
+							pg.text(stnamepre,30,60,300,300);
+							
+							pg.textSize(11);	
+							pg.textStyle(NORMAL);
+							pg.text(stdcpre,30,90,300,300);
+							}
+						 pg.drawingContext.fillStyle=grd;
+							pg.rect(10,410,350,100,0);
+						 pg.fill("white");
+							pg.textAlign(LEFT);
+							pg.textStyle(BOLD);
+								pg.textSize(20);	
+							pg.text("TOTAL:- "+dprice+" "+cr,30,420,300,300);
+						 pg.textSize(8);
+	      pg.text("SubTotal:-"+total+" "+cr,30,445,300,300);
+							pg.text("GST:-"+getgst.value+"%"+" | "+"TaxAmt:-"+gstamount+" "+cr,30,455,300,300);						pg.text("Disc:-"+getdiscount.value+"%"+" | "+"DiscAmt:-"+discountamt+" "+cr,30,465,300,300);
+							pg.text(globalpaystat,30,475,300,200);
+							pg.textAlign(RIGHT);
+							pg.textSize(8);
+							pg.text(globaltagline+" @"+stnamepre,30,490,300,10);
+							var sizes = 150;
+							pg.fill("black");
+							pg.textSize(11);	
+							pg.textAlign(CENTER);
+							pg.textStyle(BOLD);
+							pg.noStroke();
+						 pg.text("Item",30,sizes,150,100);
+							pg.text("Qnt",30,sizes,300,100);
+							pg.text("Rate",30,sizes,400,100);
+							pg.text("Amount",30,sizes,500,100);
+							pg.stroke("green");
+							pg.strokeWeight(0.5);
+							pg.line(20,sizes+15,350,sizes+15);
+							
+							for(var p=0;p<citems.length;p++){
+							
+							sizes=sizes+20;
+			   	pg.fill("black");
+							pg.textSize(8);	
+							pg.textAlign(CENTER);
+							pg.textStyle(NORMAL);
+							pg.noStroke();
+							pg.text(citems[p],30,sizes,150,200);
+							pg.text(cqn[p],30,sizes,300,200);
+							pg.text(cunit[p],30,sizes,400,200);
+							pg.text(amtarr[p],30,sizes,500,200);
+							pg.stroke("green");
+							pg.strokeWeight(0.5);
+							pg.line(20,sizes+15,350,sizes+15);
+							
+							
+							}
+							
+							image(pg,10,10,350,500);
+							}
+							function loadagain(){
+							    location.reload();
+							}
+							function downl(){
+				    alert("Wait Downloading....");
+								pg.saveCanvas(c,"mycanva","png");		
+								isdwrepsent=true;
+				}
+  </script>
+ 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>   
+      
+
+  	</body>
+    	</html>  	
