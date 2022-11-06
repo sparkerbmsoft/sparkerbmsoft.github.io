@@ -1083,7 +1083,7 @@ transform:scale(0.9);
      
   <div id="sendwpcard">    
    <div>
-        <input type="number" id="customermb" placeholder="Enter WhatsApp number" onchange="sendwpfun()">
+        <input type="number" onclick="clearphone()"  id="customermb" placeholder="Enter WhatsApp number" onchange="sendwpfun()">
         <a id="textsendbut" href="#">Send to WhatsApp</a>
    </div>
  </div> 
@@ -1965,6 +1965,14 @@ var txtmsg =`__Receipt---- *${stnamepre}*__,${stdcpre}, Date: __*${currentdate}*
          
      }
      
+ function clearphone(){
+        
+        var phoneinput = getbyid("customermb");
+        
+        phoneinput.value="";  
+         
+     }
+
      function genranditem(){
          
          var getrandopt = document.getElementById("randdata");
